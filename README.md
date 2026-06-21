@@ -106,6 +106,17 @@ pytest
 
 Для простого деплоя достаточно подключить репозиторий к Railway и добавить PostgreSQL-сервис, если хотите хранить данные не в SQLite.
 
+## Деплой
+
+Ссылка на деплой: https://studylog-flask-production.up.railway.app/
+
+## Тестовые данные
+
+После выполнения команды `flask --app wsgi seed-demo` можно войти под тестовым пользователем:
+
+login: demo  
+password: demo123
+
 ### Переменные окружения
 
 Укажите в Railway:
