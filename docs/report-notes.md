@@ -26,7 +26,8 @@ StudyLog - это небольшой учебный веб-проект на Pyt
 ## 3. Технический паспорт
 
 - Название проекта: `StudyLog`
-- Выбранный проект из каталога Project Based Learning: [Build a Microblog with Flask](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+- Каталог Project Based Learning: [https://github.com/practical-tutorials/project-based-learning](https://github.com/practical-tutorials/project-based-learning)
+- Выбранный туториал: [Build a Microblog with Flask](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
 - GitHub: [https://github.com/shlegeldavid/studylog-flask](https://github.com/shlegeldavid/studylog-flask)
 - Деплой: [https://studylog-flask-production.up.railway.app/](https://studylog-flask-production.up.railway.app/)
 - Стек: Python, Flask, Jinja2, SQLAlchemy, Flask-Login, Flask-WTF, Flask-Migrate, Gunicorn, Pytest
@@ -109,7 +110,11 @@ erDiagram
 | Личная лента и создание заметки | `app/main/routes.py`, `app/main/forms.py`, `app/templates/main/index.html` | `/` после входа |
 | Общая лента | `app/main/routes.py`, `app/templates/main/feed.html` | `/feed` |
 | Профиль пользователя | `app/main/routes.py`, `app/templates/main/user.html` | `/user/demo`, `/user/alice`, `/user/bob` |
+| Редактирование профиля | `app/main/routes.py`, `app/main/forms.py`, `app/templates/main/edit_profile.html` | `/edit-profile` |
 | Подписка на пользователя | `app/main/routes.py`, `app/templates/main/user.html` | `/user/bob` после входа под `demo` |
+| Пагинация | `app/main/routes.py`, `app/templates/main/_pagination.html` | `/?page=2`, `/feed?page=2`, `/user/alice?page=2` |
+| Healthcheck | `app/__init__.py` | `/health` |
+| Автотесты | `tests/` | напрямую на деплое не проверяется, но подтверждает работу проекта в репозитории |
 | Модели базы данных | `app/models.py` | косвенно используется на всех страницах |
 | Обработка ошибок | `app/__init__.py`, `app/templates/errors/` | любая несуществующая страница, например `/missing-page` |
 | Демо-данные | `app/__init__.py` команда `seed-demo` | вход под `demo / demo123` |
@@ -122,7 +127,9 @@ erDiagram
 4. Создать одну короткую заметку и показать, что она сразу появилась в ленте.
 5. Перейти в общую ленту `/feed` и показать, что там видны заметки всех пользователей.
 6. Открыть профиль `bob` и показать кнопку подписки.
-7. Сказать, что данные хранятся в базе, а само приложение развернуто на Railway.
+7. Выполнить выход из аккаунта и показать, что пользователь возвращается в гостевой режим.
+8. Открыть несуществующую страницу, например `/missing-page`, и показать обработку ошибки `404`.
+9. Сказать, что данные хранятся в базе, а само приложение развернуто на Railway.
 
 ## Короткий вывод
 
