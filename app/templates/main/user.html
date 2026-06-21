@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="profile-card">
+        <div>
+            <h1>@{{ profile.username }}</h1>
+            <p class="profile-meta">В StudyLog с {{ profile.created_at.strftime("%d.%m.%Y") }}</p>
+            {% if profile.about_me %}
+                <p>{{ profile.about_me }}</p>
+            {% else %}
+                <p class="muted">Пользователь пока не добавил описание.</p>
+            {% endif %}
+        </div>
+
+        <div class="profile-stats">
+            <span>Заметок: {{ profile.posts.count() }}</span>
+            <span>Подписки: {{ profile.following.count() }}</span>
+            <span>Подписчики: {{ profile.followers.count() }}</span>
+        </div>
+
+        <div class="profile-actions">
+            {% if current_user.is_authenticated and current_user.id == profile.id %}
+                <a class="button" href="{{ url_for('main.edit_profile') }}">Редактировать профиль</a>
+            {% elif current_user.is_authenticated %}
+                <form method="post" action="{% if current_user.is_following(profile) %}{{ url_for('main.unfollow', username=profile.username) }}{% else %}{{ url_for('main.follow', username=profile.username) }}{% endif %}">
+                    {{ form.hidden_tag() }}
+                    <button class="button {% if current_user.is_following(profile) %}button-secondary{% endif %}" type="submit">
+                        {% if current_user.is_following(profile) %}Отписаться{% else %}Подписаться{% endif %}
+                    </button>
+                </form>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>Заметки пользователя</h2>
+        {% if posts %}
+            <div class="post-list">
+                {% for post in posts %}
+                    {% include "main/_post.html" %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="empty-state">У пользователя пока нет заметок.</p>
+        {% endif %}
+    </section>
+{% endblock %}

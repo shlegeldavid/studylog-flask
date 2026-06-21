@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if current_user.is_authenticated %}
+        <section class="hero-card">
+            <h1>Моя учебная лента</h1>
+            <p>Здесь собраны ваши заметки и заметки пользователей, на которых вы подписаны.</p>
+        </section>
+
+        <section class="panel">
+            <h2>Новая заметка</h2>
+            <form method="post" class="form-stack">
+                {{ form.hidden_tag() }}
+                <div>
+                    {{ form.body.label(class="form-label") }}
+                    {{ form.body(class="form-textarea", rows=4, placeholder="Коротко запишите, что вы сегодня изучили") }}
+                    {% for error in form.body.errors %}
+                        <p class="form-error">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {{ form.submit(class="button") }}
+            </form>
+        </section>
+
+        <section class="panel">
+            <h2>Лента подписок</h2>
+            {% if posts %}
+                <div class="post-list">
+                    {% for post in posts %}
+                        {% include "main/_post.html" %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="empty-state">Пока здесь пусто. Добавьте первую заметку или подпишитесь на других студентов.</p>
+            {% endif %}
+        </section>
+    {% else %}
+        <section class="hero-card">
+            <h1>StudyLog</h1>
+            <p>Небольшой учебный микроблог на Flask для заметок об учебе, темах и практике.</p>
+            <div class="hero-actions">
+                <a class="button" href="{{ url_for('auth.register') }}">Создать аккаунт</a>
+                <a class="button button-secondary" href="{{ url_for('auth.login') }}">Войти</a>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Последние заметки</h2>
+            {% if recent_posts %}
+                <div class="post-list">
+                    {% for post in recent_posts %}
+                        {% include "main/_post.html" %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="empty-state">Пока заметок нет. Зарегистрируйтесь и опубликуйте первую.</p>
+            {% endif %}
+        </section>
+    {% endif %}
+{% endblock %}

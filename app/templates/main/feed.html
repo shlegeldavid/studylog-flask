@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="hero-card">
+        <h1>Общая лента</h1>
+        <p>Все заметки пользователей в обратном хронологическом порядке.</p>
+    </section>
+
+    <section class="panel">
+        {% if posts %}
+            <div class="post-list">
+                {% for post in posts %}
+                    {% include "main/_post.html" %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="empty-state">Пока никто ничего не опубликовал.</p>
+        {% endif %}
+    </section>
+{% endblock %}

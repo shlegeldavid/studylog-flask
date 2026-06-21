@@ -1,0 +1,261 @@
+:root {
+    --bg: #f4efe7;
+    --paper: #fffdfa;
+    --paper-strong: #ffffff;
+    --text: #27231f;
+    --muted: #6b6258;
+    --accent: #2f6b5f;
+    --accent-dark: #214d44;
+    --line: #d8d0c5;
+    --danger: #b24c3d;
+    --warning: #a16a16;
+    --shadow: 0 18px 40px rgba(39, 35, 31, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, rgba(47, 107, 95, 0.12), transparent 30%),
+        linear-gradient(180deg, #f8f3ea 0%, var(--bg) 100%);
+    min-height: 100vh;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: min(960px, calc(100% - 2rem));
+    margin: 0 auto;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(255, 253, 250, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(216, 208, 197, 0.85);
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 72px;
+    gap: 1rem;
+}
+
+.brand {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--text);
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.page {
+    padding: 2rem 0 4rem;
+}
+
+.hero-card,
+.panel,
+.profile-card,
+.post-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+}
+
+.hero-card,
+.panel,
+.profile-card {
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.hero-card h1,
+.panel h1,
+.panel h2,
+.profile-card h1 {
+    margin-top: 0;
+}
+
+.hero-actions,
+.profile-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.8rem 1.15rem;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background: var(--accent-dark);
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.button-secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+.button-secondary:hover {
+    background: rgba(47, 107, 95, 0.08);
+}
+
+.form-stack {
+    display: grid;
+    gap: 1rem;
+}
+
+.form-label {
+    display: inline-block;
+    margin-bottom: 0.45rem;
+    font-weight: 700;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    background: var(--paper-strong);
+    font: inherit;
+    color: var(--text);
+}
+
+.form-textarea {
+    resize: vertical;
+}
+
+.form-error {
+    margin: 0.45rem 0 0;
+    color: var(--danger);
+    font-size: 0.95rem;
+}
+
+.form-note,
+.muted,
+.empty-state,
+.profile-meta {
+    color: var(--muted);
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.post-list {
+    display: grid;
+    gap: 0.9rem;
+}
+
+.post-card {
+    padding: 1rem 1.1rem;
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.7rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.post-body {
+    margin: 0;
+    line-height: 1.55;
+    white-space: pre-wrap;
+}
+
+.profile-card {
+    display: grid;
+    gap: 1rem;
+}
+
+.profile-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: var(--muted);
+}
+
+.flash-list {
+    display: grid;
+    gap: 0.7rem;
+    margin-bottom: 1.1rem;
+}
+
+.flash {
+    padding: 0.9rem 1rem;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+}
+
+.flash-success {
+    border-color: rgba(47, 107, 95, 0.35);
+}
+
+.flash-error {
+    border-color: rgba(178, 76, 61, 0.35);
+}
+
+.flash-warning {
+    border-color: rgba(161, 106, 22, 0.35);
+}
+
+.narrow-panel {
+    width: min(100%, 560px);
+}
+
+@media (max-width: 640px) {
+    .nav-bar,
+    .post-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page {
+        padding-top: 1.25rem;
+    }
+}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="panel narrow-panel">
+        <h1>Регистрация</h1>
+        <form method="post" class="form-stack">
+            {{ form.hidden_tag() }}
+
+            <div>
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-input") }}
+                {% for error in form.username.errors %}
+                    <p class="form-error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div>
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-input") }}
+                {% for error in form.password.errors %}
+                    <p class="form-error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div>
+                {{ form.password2.label(class="form-label") }}
+                {{ form.password2(class="form-input") }}
+                {% for error in form.password2.errors %}
+                    <p class="form-error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            {{ form.submit(class="button") }}
+        </form>
+        <p class="form-note">Уже есть аккаунт? <a href="{{ url_for('auth.login') }}">Войти</a>.</p>
+    </section>
+{% endblock %}
