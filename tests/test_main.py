@@ -12,7 +12,7 @@ def login(client, username: str, password: str) -> None:
 
 def test_authenticated_user_can_create_post(client, app):
     with app.app_context():
-        user = User(username="alice")
+        user = User(username="alice", email="alice@example.com")
         user.set_password("study123")
         db.session.add(user)
         db.session.commit()
@@ -29,9 +29,9 @@ def test_authenticated_user_can_create_post(client, app):
 
 def test_followed_feed_shows_notes_of_followed_users(client, app):
     with app.app_context():
-        alice = User(username="alice")
+        alice = User(username="alice", email="alice@example.com")
         alice.set_password("study123")
-        bob = User(username="bob")
+        bob = User(username="bob", email="bob@example.com")
         bob.set_password("study123")
         db.session.add_all([alice, bob])
         db.session.commit()

@@ -6,9 +6,9 @@ from app.models import Post, User
 
 def test_user_can_follow_and_unfollow(app):
     with app.app_context():
-        alice = User(username="alice")
+        alice = User(username="alice", email="alice@example.com")
         alice.set_password("study123")
-        bob = User(username="bob")
+        bob = User(username="bob", email="bob@example.com")
         bob.set_password("study123")
         db.session.add_all([alice, bob])
         db.session.commit()
@@ -28,11 +28,11 @@ def test_user_can_follow_and_unfollow(app):
 
 def test_followed_posts_include_own_and_followed_posts(app):
     with app.app_context():
-        alice = User(username="alice")
+        alice = User(username="alice", email="alice@example.com")
         alice.set_password("study123")
-        bob = User(username="bob")
+        bob = User(username="bob", email="bob@example.com")
         bob.set_password("study123")
-        carol = User(username="carol")
+        carol = User(username="carol", email="carol@example.com")
         carol.set_password("study123")
         db.session.add_all([alice, bob, carol])
         db.session.commit()

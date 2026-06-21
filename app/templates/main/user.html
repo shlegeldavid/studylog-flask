@@ -5,6 +5,7 @@
         <div>
             <h1>@{{ profile.username }}</h1>
             <p class="profile-meta">В StudyLog с {{ profile.created_at.strftime("%d.%m.%Y") }}</p>
+            <p class="profile-meta">{{ profile.email }}</p>
             {% if profile.about_me %}
                 <p>{{ profile.about_me }}</p>
             {% else %}

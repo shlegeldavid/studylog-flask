@@ -22,6 +22,7 @@ def utc_now() -> datetime:
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), unique=True, nullable=False, index=True)
+    email = db.Column(db.String(120), unique=True, nullable=False, index=True)
     password_hash = db.Column(db.String(255), nullable=False)
     about_me = db.Column(db.String(280), default="")
     created_at = db.Column(db.DateTime, default=utc_now, nullable=False)
