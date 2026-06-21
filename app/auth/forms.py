@@ -24,7 +24,7 @@ class RegistrationForm(FlaskForm):
         validators=[DataRequired(), Length(min=3, max=64)],
     )
     email = StringField(
-        "Email",
+        "Электронная почта",
         validators=[DataRequired(), Email(), Length(max=120)],
     )
     password = PasswordField(

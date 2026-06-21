@@ -29,7 +29,7 @@ def login():
             next_page = url_for("main.home")
         return redirect(next_page)
 
-    return render_template("auth/login.html", title="Login", form=form)
+    return render_template("auth/login.html", title="Вход", form=form)
 
 
 @bp.route("/register", methods=["GET", "POST"])
@@ -49,7 +49,7 @@ def register():
         flash("Аккаунт создан. Теперь можно войти.", "success")
         return redirect(url_for("auth.login"))
 
-    return render_template("auth/register.html", title="Register", form=form)
+    return render_template("auth/register.html", title="Регистрация", form=form)
 
 
 @bp.route("/logout")

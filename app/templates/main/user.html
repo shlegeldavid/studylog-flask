@@ -41,6 +41,7 @@
                     {% include "main/_post.html" %}
                 {% endfor %}
             </div>
+            {% include "main/_pagination.html" %}
         {% else %}
             <p class="empty-state">У пользователя пока нет заметок.</p>
         {% endif %}

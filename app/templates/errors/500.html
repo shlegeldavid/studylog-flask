@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="panel narrow-panel error-card">
+        <h1>Ошибка сервера</h1>
+        <p>Что-то пошло не так на стороне приложения. Попробуйте открыть страницу еще раз немного позже.</p>
+        <a class="button" href="{{ url_for('main.home') }}">На главную</a>
+    </section>
+{% endblock %}

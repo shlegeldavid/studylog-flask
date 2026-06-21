@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="panel narrow-panel error-card">
+        <h1>Страница не найдена</h1>
+        <p>Похоже, такой страницы в StudyLog нет или ссылка устарела.</p>
+        <a class="button" href="{{ url_for('main.home') }}">Вернуться на главную</a>
+    </section>
+{% endblock %}

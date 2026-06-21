@@ -6,14 +6,20 @@ from app.models import User
 
 
 class PostForm(FlaskForm):
-    body = TextAreaField("New note", validators=[DataRequired(), Length(min=1, max=280)])
-    submit = SubmitField("Publish")
+    body = TextAreaField(
+        "Текст заметки",
+        validators=[DataRequired(), Length(min=1, max=280)],
+    )
+    submit = SubmitField("Опубликовать")
 
 
 class EditProfileForm(FlaskForm):
-    username = StringField("Username", validators=[DataRequired(), Length(min=3, max=64)])
-    about_me = TextAreaField("About me", validators=[Length(max=280)])
-    submit = SubmitField("Save")
+    username = StringField(
+        "Имя пользователя",
+        validators=[DataRequired(), Length(min=3, max=64)],
+    )
+    about_me = TextAreaField("О себе", validators=[Length(max=280)])
+    submit = SubmitField("Сохранить")
 
     def __init__(self, original_username: str, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
@@ -27,4 +33,4 @@ class EditProfileForm(FlaskForm):
 
 
 class EmptyForm(FlaskForm):
-    submit = SubmitField("Submit")
+    submit = SubmitField("Отправить")

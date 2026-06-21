@@ -19,6 +19,7 @@ class Config:
         os.environ.get("DATABASE_URL", f"sqlite:///{BASE_DIR / 'studylog.db'}")
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    POSTS_PER_PAGE = 5
 
 
 class TestConfig(Config):

@@ -30,6 +30,7 @@
                         {% include "main/_post.html" %}
                     {% endfor %}
                 </div>
+                {% include "main/_pagination.html" %}
             {% else %}
                 <p class="empty-state">Пока здесь пусто. Добавьте первую заметку или подпишитесь на других студентов.</p>
             {% endif %}

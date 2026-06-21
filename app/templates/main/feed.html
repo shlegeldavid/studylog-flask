@@ -13,6 +13,7 @@
                     {% include "main/_post.html" %}
                 {% endfor %}
             </div>
+            {% include "main/_pagination.html" %}
         {% else %}
             <p class="empty-state">Пока никто ничего не опубликовал.</p>
         {% endif %}

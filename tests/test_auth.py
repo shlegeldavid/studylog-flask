@@ -60,3 +60,12 @@ def test_protected_page_redirects_to_login(client):
     response = client.get("/edit-profile", follow_redirects=True)
 
     assert "Сначала войдите в аккаунт." in response.get_data(as_text=True)
+
+
+def test_login_page_uses_russian_labels(client):
+    response = client.get("/auth/login")
+    page = response.get_data(as_text=True)
+
+    assert "Вход" in page
+    assert "Имя пользователя" in page
+    assert "Запомнить меня" in page
