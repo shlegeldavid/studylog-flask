@@ -14,6 +14,8 @@ def normalize_database_url(url: str) -> str:
 
 
 class Config:
+    APP_ENV = os.environ.get("FLASK_ENV", "production")
+    DEBUG = os.environ.get("FLASK_DEBUG", "0") == "1" or APP_ENV == "development"
     SECRET_KEY = os.environ.get("SECRET_KEY", "change-me-in-production")
     SQLALCHEMY_DATABASE_URI = normalize_database_url(
         os.environ.get("DATABASE_URL", f"sqlite:///{BASE_DIR / 'studylog.db'}")
@@ -23,6 +25,8 @@ class Config:
 
 
 class TestConfig(Config):
+    APP_ENV = "testing"
     TESTING = True
+    DEBUG = False
     WTF_CSRF_ENABLED = False
     SQLALCHEMY_DATABASE_URI = "sqlite://"

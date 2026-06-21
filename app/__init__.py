@@ -27,6 +27,10 @@ def create_app(config_class: type[Config] = Config) -> Flask:
     def make_shell_context() -> dict[str, object]:
         return {"db": db, "User": User, "Post": Post}
 
+    @app.get("/health")
+    def healthcheck() -> tuple[str, int]:
+        return "ok", 200
+
     @app.cli.command("init-db")
     def init_db_command() -> None:
         db.create_all()

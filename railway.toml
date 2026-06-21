@@ -1,0 +1,9 @@
+[build]
+builder = "RAILPACK"
+buildCommand = "pip install -r requirements.txt"
+
+[deploy]
+startCommand = "gunicorn --bind 0.0.0.0:${PORT:-8000} wsgi:app"
+healthcheckPath = "/health"
+healthcheckTimeout = 100
+preDeployCommand = "flask --app wsgi init-db"
