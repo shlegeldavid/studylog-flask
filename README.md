@@ -1,5 +1,7 @@
 # StudyLog
 
+[![Tests](https://github.com/shlegeldavid/studylog-flask/actions/workflows/tests.yml/badge.svg)](https://github.com/shlegeldavid/studylog-flask/actions/workflows/tests.yml)
+
 StudyLog - небольшой учебный веб-проект на Flask. Это микроблог для коротких заметок об учебе: пользователь может зарегистрироваться, войти, опубликовать заметку, открыть общую ленту, посмотреть профиль и подписаться на других пользователей.
 
 ## Стек
